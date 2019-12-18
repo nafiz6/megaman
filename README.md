@@ -8,4 +8,6 @@ Other folders in /src directory contain .png sprites and the single sounds folde
 
 ## Features
 
-The game offers multiplayer capabilites via built in java networking library. The Server file needs to be run first, followed by two instances of Game (one for each player). The two instances can be on seperate machines on the same network provided the correct server address is added to the Game.java file for each of the players.
+The game offers multiplayer capabilites via built in java networking library.
+The Server file needs to be run first, followed by two instances of Game (one for each player). 
+The two instances can be on seperate machines on the same network provided the correct server address is added to the Game.java file for each of the players.
