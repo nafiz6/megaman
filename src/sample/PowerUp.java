@@ -1,7 +1,5 @@
 package sample;
 
-import javafx.animation.AnimationTimer;
-
 public class PowerUp {
     Sprite sprite;
     double add = 0.15;
@@ -34,7 +32,7 @@ public class PowerUp {
         if (sprite.intersects(character) && !taken){
             takenTime = System.nanoTime();
             taken=true;
-            new Sound(path, 3);
+            //new Sound(path, 3);
             return true;
         }
         return false;

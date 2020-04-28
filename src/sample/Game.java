@@ -83,12 +83,12 @@ public class Game extends Application {
     @Override
     public void start(Stage theStage) throws Exception {
         gameInfo = new GameInfo();
-        score = new Sound(scoreSoundPath,540);
+        //score = new Sound(scoreSoundPath,540);
 
         opponent.setOpponent(player);
         player.setOpponent(opponent);
 
-        client = new Client(this);
+        //client = new Client(this, name.toString());
 
         Group root = new Group();
         theScene = new Scene(root);
@@ -96,8 +96,8 @@ public class Game extends Application {
         theStage.setTitle("Mega");
         Canvas canvas = new Canvas(WIN_WIDTH, WIN_HEIGHT);
 
-        name = new TextField("No Name");
-        nameButton = new Button("set name");
+        name = new TextField("127.0.0.1");
+        nameButton = new Button("Enter Server IP Address");
 
         name.setLayoutX(500 - 85);
         name.setLayoutY(300);
@@ -111,8 +111,10 @@ public class Game extends Application {
         nameButton.setOnAction(e -> {
             username = name.getText();
             System.out.println(username);
+            client = new Client(this, username);
             root.getChildren().removeAll(name, nameButton);
             gameState=1;
+            username = "";
         });
 
 
@@ -155,8 +157,8 @@ public class Game extends Application {
                         gameState=4;
                         break;
                     case 4:
-                        playIntro=false;
                         intro.render(gc,1000,500);
+                        playIntro=false;
                         if ((currentNanoTime-stateThreeTime)/7>1070000000){
                             gameState=5;
                         }
@@ -218,12 +220,12 @@ public class Game extends Application {
 
             }
             if(playWin && playOnlyOnce == 0) {
-                score.stop();
-                new Sound(winSoundPath, 3);
+                //score.stop();
+                //new Sound(winSoundPath, 3);
                 playOnlyOnce++;
             } else if(playLose && playOnlyOnce == 0) {
-                score.stop();
-                new Sound(loseSoundPath, 3);
+                //score.stop();
+                //new Sound(loseSoundPath, 3);
                 playOnlyOnce++;
             }
             gameEnd=true;
@@ -294,12 +296,11 @@ public class Game extends Application {
 
     void initiateKeyBoardInput(){
 
-
         theScene.setOnKeyPressed(e -> {
 
             String code = e.getCode().toString();
             if (code.equals("P")) {
-                toControl.createShield();
+                player.createShield();
             }
             if (toControl.controls.contains(code)){
                 if (!toControl.input.contains(code)){
@@ -322,7 +323,7 @@ public class Game extends Application {
         theScene.setOnMouseClicked(event -> {
             Point2D p = new Point2D(event.getSceneX(), event.getSceneY());
             if ((gameState==1 || gameEnd) && startButton.contains(p)){
-                new Sound(selectSoundPath, 3);
+                //new Sound(selectSoundPath, 3);
                 refreshGameObjects();
                 initiateKeyBoardInput();
                 gameState = 2;

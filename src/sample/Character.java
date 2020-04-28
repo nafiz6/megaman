@@ -220,7 +220,7 @@ public class Character extends Sprite {
 
     public void damage(double dmg){
 
-        new Sound(damageSoundPath, 3);
+        //new Sound(damageSoundPath, 3);
 
         if (shield.hasShield) return;
         healthBar.setHealth(healthBar.getHealth()-dmg);
@@ -238,13 +238,16 @@ public class Character extends Sprite {
 
         for(Sprite floor: floors) {
             if(floor.getBoundary().contains(this.getBase()) || floor.getBoundary().intersects(this.getBase())) {
-                if(playLandSound) {
-                    new Sound(landSoundPath, 3);
-                    playLandSound = false;
-                }
+
                 this.setPosition(positionX, floor.getBoundary().getMinY() - this.getBoundary().getHeight() + 3);
                 onFloor = true;
                 touchedTop = false;
+
+                if(playLandSound) {
+                    //new Sound(landSoundPath, 3);
+                    playLandSound = false;
+                }
+
             }
          }
         if(!onFloor) {
@@ -314,7 +317,7 @@ public class Character extends Sprite {
 
     public void jump() {
         if (getVelocityY()==0) {
-            new Sound(jumpSoundPath, 3);
+            //new Sound(jumpSoundPath, 3);
             setVelocity(getVelocityX(),-10);
             playLandSound = true;
         }
@@ -333,7 +336,7 @@ public class Character extends Sprite {
 
 
     public void shoot(Character opponent) {
-        new Sound(bulletSoundPath, 2);
+        //new Sound(bulletSoundPath, 2);
         new Fire(Game.gc,this, opponent);
     }
     public void shootAnim(double t) {
@@ -436,7 +439,7 @@ public class Character extends Sprite {
                     healthBar.bullets=0;
                 }
                 if(healthBar.bullets == 0) {
-                    new Sound(noAmmoSoundPath, 1);
+                    //new Sound(noAmmoSoundPath, 1);
                 }
                 this.shoot(opponent);
                 shootOnlyOnce++;
@@ -449,7 +452,8 @@ public class Character extends Sprite {
 
         if(meleeFlag && meleeState<=20) {
             if(meleeState ==1) {
-                new Sound(meleeSoundPath, 2);            }
+                //new Sound(meleeSoundPath, 2);
+                }
             this.melee(opponent);
             meleeState++;
         }

@@ -15,19 +15,22 @@ public class Client implements Runnable{
     private ObjectInputStream in;
     Game game;
     Character toControl;
+    String address;
 
 
-    public Client(Game game){
+    public Client(Game game, String address){
 
        this.game =game;
         t = new Thread(this,"threadC");
         t.start();
+        this.address = address;
     }
+
     @Override
     public void run() {
         while (true) {
             try {
-                clientSocket = new Socket("127.0.0.1", portNumber);
+                clientSocket = new Socket(address, portNumber);
 
                 out = new ObjectOutputStream(clientSocket.getOutputStream());
                 in = new ObjectInputStream((clientSocket.getInputStream()));

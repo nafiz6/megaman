@@ -5,7 +5,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
-public class ServerRead implements Runnable{
+public class ServerRead implements Runnable {
     Socket clientSocket;
     String name;
     Thread thread;

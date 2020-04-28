@@ -39,7 +39,7 @@ public class Shield implements Runnable {
 
     public void shieldOn(){
         hasShield=true;
-        new Sound(path, 3);
+        //new Sound(path, 3);
         thread = new Thread(this);
         thread.start();
     }

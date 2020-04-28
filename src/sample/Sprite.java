@@ -97,6 +97,11 @@ public class Sprite
 
     }
 
+    public void renderByCenter(){
+        double x = positionX - image.getWidth()/2;
+        double y = positionY - image.getHeight()/2;
+        Game.gc.drawImage(image,x,y);
+    }
 
     public Rectangle2D getBoundary()
     {
